@@ -2,22 +2,20 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const IngredientSchema = new Schema({
-    name: String,
-    amount: Number
-}, {
-    timestamps: true
+    name:{
+        type: String,
+        required: true
+    } ,
+    amount: {
+        type: Number,
+        required: true
+    },
 });
 
-// const Ingredient = mongoose.model('ingredient', IngredientSchema);
-//
-// const ingredient = new Ingredient({
-//     name: 'Buns',
-//     amount: 2
-// }).save();
-//
-// const ingredient2 = new Ingredient({
-//     name: 'Meat',
-//     amount: 1
-// }).save();
+const Ingredient = mongoose.model('ingredients', IngredientSchema);
 
-module.exports = IngredientSchema;
+
+module.exports={
+    Ingredient: Ingredient
+    , IngredientSchema : IngredientSchema
+};

@@ -5,7 +5,7 @@ var logger = require('morgan');
 var mongodb = require('./config/mongo.db');
 var reciperoutes_v1 = require('./api/recipe.routes.v1');
 var config = require('./config/env/env');
-var ingredientroutes_v1 = require('./api/ingredient.routes.v1');
+var ingredientroutes_v1 = require('./api/ingredient.route.v1');
 
 var app = express();
 
@@ -56,5 +56,5 @@ app.use('*', function (req, res) {
 
 app.listen(config.env.webPort, function () {
     console.log('De server luistert op port ' + app.get('port'));
-    console.log('Zie bijvoorbeeld http://localhost:3000/api/v1/recipes');
+    console.log('Zie bijvoorbeeld http://localhost:3000/api/v1/recipe');
 });
