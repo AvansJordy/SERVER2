@@ -21,29 +21,29 @@ const Recipe = mongoose.model('recipe', RecipeSchema);
 
 Recipe.count({}, function (err, count) {
     if(count < 5){
-        console.log('voeg recipe toe');
+        console.log('Voeg recipe toe (database is leeg)');
         const recipe = new Recipe({
-            name: 'Pizza',
-            description: 'schijf deeg met dingen erop',
-            imagePath: 'https://cdn.modpizza.com/wp-content/uploads/2016/11/mod-pizza-maddy-default-e1479167621575.png',
+            name: 'Chebureki (ЧЕБУРЕКИ)',
+            description: 'Lekker Russish recept wat vaak wordt gegeten',
+            imagePath: 'http://2.bp.blogspot.com/-Gjw-YnoxoMI/VWJClqhdzYI/AAAAAAAASnM/KGJcHXU7RTU/s1600/%25D0%25A7%25D0%25B5%25D0%25B1%25D1%2583%25D1%2580%25D0%25B5%25D0%25BA%25D0%25B8%2B%25231.jpg',
             ingredients: [
                 {
-                    name: 'deeg',
-                    amount: 2
+                    name: 'Rundvlees',
+                    amount: 3
                 },
                 {
-                    name: 'tomaat',
-                    amount: 4
-                },
-                {
-                    name: 'vlees',
+                    name: 'Frituurpan',
                     amount: 1
+                },
+                {
+                    name: 'Deeg',
+                    amount: 2
                 }
             ]
         }).save();
     }
     else {
-        console.log('zit al een recipe in de db')
+        console.log('Test recipe wordt niet gebruikt, er zijn al recepten aanwezig in de database')
     }
 });
 
