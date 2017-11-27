@@ -8,7 +8,9 @@ routes.get('/ingredients', function(req, res) {
     res.contentType('application/json');
     ingredients.find({})
         .then((ingredients) => {
-        res.status(200).json(ingredients);
+        res.status(200).json({
+        'ingredients': ingredients
+    });
 })
     .catch((error) => res.status(400).json(error));
 });
@@ -19,7 +21,9 @@ routes.get('/ingredients/:id', function(req, res) {
     console.log(id);
     ingredients.find({_id: id})
         .then((ingredients) => {
-        res.status(200).json(ingredients);
+        res.status(200).json({
+        'recipe': ingredients
+    });
 })
     .catch((error) => res.status(400).json(error));
 });
@@ -38,7 +42,7 @@ routes.delete('/ingredients/:id', function(req, res) {
     const id = req.param('id');
     ingredients.findByIdAndRemove(id)
         .then((status) => res.status(200).json({
-        'status': 'succesvol verwijderd',
+        'status': 'ingredient is verwijderd',
         'ingredients': status
     }))
     .catch((error) => res.status(400).json(error))
@@ -46,9 +50,11 @@ routes.delete('/ingredients/:id', function(req, res) {
 
 routes.put('/ingredients/:id', function(req, res) {
     res.contentType('application/json');
+    const ingredientId = req.params.id;
+    const ingredientProps = req.body;
 
-    ingredients.findByIdAndUpdate({_id: req.params.id}, req.body)
-        .then(()=> ingredients.findById({_id: req.params.id}))
+    ingredients.findByIdAndUpdate({_id: ingredientId}, ingredientProps)
+        .then(()=> ingredients.findById({_id: ingredientId}))
     .then(ingredients => res.send(ingredients))
     .catch((error) => res.status(400).json(error))
 
