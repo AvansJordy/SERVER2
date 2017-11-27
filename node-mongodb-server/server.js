@@ -3,9 +3,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var mongodb = require('./config/mongo.db');
-var reciperoutes_v1 = require('./api/recipes.routes.v1');
+var reciperoutes_v1 = require('./api/recipe.routes.v1');
 var config = require('./config/env/env');
-var ingredientroutes_v1 = require('./api/ingredients.route.v1');
+var ingredientroutes_v1 = require('./api/ingredient.route.v1');
 
 var app = express();
 
