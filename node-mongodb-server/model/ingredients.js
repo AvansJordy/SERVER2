@@ -15,7 +15,4 @@ const IngredientSchema = new Schema({
 const Ingredient = mongoose.model('ingredients', IngredientSchema);
 
 
-module.exports={
-    Ingredient: Ingredient
-    , IngredientSchema : IngredientSchema
-};
+module.exports={Ingredient, IngredientSchema};
